@@ -16,7 +16,7 @@ var mySlice []int // This is a slice, not an array
 
 You can use the `append` function to add elements to a slice, and the slice will automatically resize as needed to accommodate the new elements. Slices are more commonly used than arrays for most tasks in Go because of their flexibility.
 
-### How we now upfront the size of the array to define the correct size?
+### How do we now upfront the size of the array to define the correct size?
 
 Determining the correct size of an array upfront depends on the specific requirements of your program and the data you're working with. You typically need to consider factors such as the maximum number of elements you'll need to store and the memory constraints of your system. Here are some strategies to help you decide on the array size:
 
@@ -89,7 +89,7 @@ The decision to use arrays or slices in Go depends on your specific requirements
 
 In most cases, slices are the preferred choice in Go because they are more versatile and easier to work with. They are particularly well-suited for collections of data with dynamic sizes. However, arrays still have their place in scenarios where a fixed size is a requirement, and you want to optimize for performance or memory usage.
 
-### Can I change the data type after defining a array in Golang?
+### Can I change the data type after defining an array in Golang?
 
 In Go, once you define an array with a specific data type, you cannot change the data type of the array elements. The data type of an array is part of its type, and it is fixed at compile-time. Attempting to change the data type of an element in an array would result in a compilation error.
 
@@ -103,7 +103,7 @@ You cannot later change the data type of the elements in `myArray` to something 
 
 If you need to work with different data types or have a more flexible collection, you should consider using slices, which can hold elements of various types and can be dynamically resized. Slices provide more flexibility when it comes to working with different data types within the same collection.
 
-### So is correct to say that in Golang you can only store on type of data? It's not like other languages that you can mix different types of data inside of a array
+### So is correct to say that in Golang you can only store one type of data? It's not like other languages where you can mix different types of data inside an array
 
 In Go, arrays are homogeneous, which means that they can only store elements of a single, specific data type. This is different from some dynamically typed languages like Python or JavaScript, where you can create arrays or lists that hold elements of different types.
 
@@ -128,7 +128,7 @@ mySlice = append(mySlice, "two")
 
 In this example, `mySlice` can hold elements of different types because it's a slice of the empty interface type `interface{}`. However, you'll need to perform type assertions when accessing elements in the slice to work with their actual types.
 
-### So to work with slices in Golang, you don't need to decide upfront the data types?
+### So to work with slices in Golang, you don't need to decide (upfront) the data types?
 
 In Go, when working with slices, you don't need to specify the data types of the elements upfront. Slices are more flexible than arrays in this regard. Slices are dynamic data structures that can hold elements of different types or the same type, and you can decide the data type of the elements when you add them to the slice.
 
@@ -159,7 +159,7 @@ In this example, `mySlice` is a slice of the empty interface type `interface{}`,
 
 So, in summary, slices in Go are versatile and can hold elements of different types, and you can determine the data types of elements when you add them to the slice.
 
-### Can I define a specific data type for a slice and change in future to aggregate more data types or to remove on type of data defined previously?
+### Can I define a specific data type for a slice and change it in the future to aggregate more data types or to remove one type of data defined previously?
 
 In Go, when you define a slice, you specify the data type of its elements at the time of declaration, and you cannot change that data type for the slice afterward. Once you've defined a slice to hold elements of a specific type, it remains restricted to that type for its entire lifetime.
 
@@ -180,9 +180,9 @@ mySlice = append(mySlice, 3.14)
 
 In this case, `mySlice` can hold elements of any data type because it's a slice of the empty interface type `interface{}`. However, working with elements in such a slice requires type assertions to determine their actual types.
 
-So, to work with different data types within a single slice, you should use a slice of the `interface{}` type or define your own custom data structure (e.g., a struct) that can hold elements of various types and use a slice of that custom type.
+So, to work with different data types within a single slice, you should use a slice of the `interface{}` type or define your custom data structure (e.g., a struct) that can hold elements of various types and use a slice of that custom type.
 
-### So if I understood correctly, if I define a data type at the creation of a slice, that slice follow close to the same rules as array?
+### So if I understood correctly, if I define a data type at the creation of a slice, that slice follows close to the same rules as an array?
 
 Yes, if you define a specific data type for the elements of a slice at its creation, the slice follows similar rules as an array in terms of data type constraints. In other words, the elements of the slice must be of the specified data type, just like an array. Here's an example:
 
@@ -199,7 +199,7 @@ In the above example, `mySlice` is defined to hold integers (`[]int`), so you ca
 
 So, while slices in Go are more flexible than arrays in terms of size, they do have constraints on the data types of their elements, just like arrays. If you need a collection that can hold elements of various data types, you should use a slice of the `interface{}` type or a custom struct type that can hold elements of different types.
 
-### So if I don't use interface{} to hold different types of data, the only difference between array and slices is the size? The rest they follow the same rule?
+### So if I don't use interface{} to hold different types of data, the only difference between array and slices is the size? Do the rest follow the same rule?
 
 Yes, if you don't use `interface{}` or similar techniques to hold different types of data in slices, then the primary difference between arrays and slices is indeed the size.
 
@@ -218,7 +218,7 @@ Apart from these differences, the rules regarding data types are similar for bot
 
 ### What if I create a slice and don't use interfaces{} or similar technique and don't define any type of data?
 
-In Go, when you create a slice without specifying a data type and don't use `interface{}` or any other similar technique to handle multiple data types, the slice elements will have the "zero value" of the element type. The zero value for a data type is a default value that depends on the type. For example, the zero value for integers is 0, for strings is an empty string ("") and for structs is a struct with all its fields set to their zero values.
+In Go, when you create a slice without specifying a data type and don't use `interface{}` or any other similar technique to handle multiple data types, the slice elements will have the "zero value" of the element type. The zero value for a data type is a default value that depends on the type. For example, the zero value for integers is 0, for strings is an empty string (""), and for structs is a struct with all its fields set to their zero values.
 
 Here's an example:
 
@@ -238,7 +238,7 @@ In this example, since we didn't specify a data type when creating the slice, th
 
 Keep in mind that if you want to store values of different types in the same slice, you would need to use `interface{}` or a similar approach, as mentioned in previous responses. Otherwise, Go will enforce a consistent data type for all elements in the slice.
 
-### Is it possible to create a slice without define any data type?
+### Is it possible to create a slice without defining any data type?
 
 In Go, you cannot create a slice without specifying a data type for its elements. Go is a statically typed language, which means that the data type of every variable, including slice elements, must be known at compile-time. If you don't specify a data type, Go cannot infer what type of elements the slice will hold, and it will result in a compilation error.
 
